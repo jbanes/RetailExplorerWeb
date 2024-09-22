@@ -33,6 +33,10 @@
                             
                             tr.append($("<td>").text(product.Name));
                             tr.append($("<td>").text(product.Price));
+                            tr.append($("<td>").text(product.BrandName));
+                            tr.append($("<td>").text(product.CategoryName));
+                            tr.append($("<td>").text(product.Type));
+                            tr.append($("<td>").text(product.SubType));
                             
                             tbody.append(tr);
                         });
@@ -49,6 +53,8 @@
                     <th>Price</th>
                     <th>Brand</th>
                     <th>Category</th>
+                    <th>Type</th>
+                    <th>SubType</th>
                 </tr>
             </thead>
             <tbody></tbody>
