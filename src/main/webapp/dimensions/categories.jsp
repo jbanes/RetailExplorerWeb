@@ -10,7 +10,7 @@
         <title>Retail Explorer</title>
         <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function() {var params = [];
                 
                 var params = [];
                 
@@ -21,34 +21,28 @@
                 <c:if test="${not empty param.brand}">
                 params.push("brand=<c:out value="${param.brand}" />");
                 </c:if>
-                    
-                <c:if test="${not empty param.category}">
-                params.push("category=<c:out value="${param.category}" />");
-                </c:if>
-                    
-                <c:if test="${not empty param.type}">
-                params.push("type=<c:out value="${param.type}" />");
-                </c:if>
-                    
-                <c:if test="${not empty param.subtype}">
-                params.push("subtype=<c:out value="${param.subtype}" />");
-                </c:if>
                 
-                fetch("/services/dimensions/products?" + params.join('&'))
+                fetch("/services/dimensions/categories?" + params.join('&'))
                     .then(response => response.json())
-                    .then(function(products) {
+                    .then(function(categories) {
                         
-                        var tbody = $("#products tbody");
+                        var tbody = $("#categories tbody");
                         
-                        products.forEach(function(product) {
+                        categories.forEach(function(category) {
                             var tr = $("<tr>");
-                            
-                            tr.append($("<td>").text(product.Name));
-                            tr.append($("<td>").text(product.Price));
-                            tr.append($("<td>").text(product.BrandName));
-                            tr.append($("<td>").text(product.CategoryName));
-                            tr.append($("<td>").text(product.Type));
-                            tr.append($("<td>").text(product.SubType));
+                            var productsLink = $("<a>")
+                                    .attr("href", "products.jsp?category=" + category.Name)
+                                    .text(category.Name);
+                            var typeLink = $("<a>")
+                                    .attr("href", "products.jsp?category=" + category.Name + "&type=" + category.Type)
+                                    .text(category.Type);
+                            var subTypeLink = $("<a>")
+                                    .attr("href", "products.jsp?subtype=" + category.id)
+                                    .text(category.SubType);
+
+                            tr.append($("<td>").append(productsLink));
+                            tr.append($("<td>").append(typeLink));
+                            tr.append($("<td>").append(subTypeLink));
                             
                             tbody.append(tr);
                         });
@@ -57,14 +51,11 @@
         </script>
     </head>
     <body>
-        <h1>Products</h1>
-        <table id="products">
+        <h1>Categories</h1>
+        <table id="categories">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Price</th>
-                    <th>Brand</th>
-                    <th>Category</th>
                     <th>Type</th>
                     <th>SubType</th>
                 </tr>
