@@ -1,0 +1,113 @@
+/*
+Copyright 2024 INVIRGANCE LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy 
+of this software and associated documentation files (the “Software”), to deal 
+in the Software without restriction, including without limitation the rights to 
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
+of the Software, and to permit persons to whom the Software is furnished to do 
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all 
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+SOFTWARE.
+*/
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+/*            color: #dee2e6;*/
+}
+
+.nodisplay {
+    display: none;
+}
+
+#page_header {
+    padding: 0.5em 0;
+    background-color: rgb(33, 37, 41);
+    color: white;
+    display: flex;
+}
+
+#page_navigation {
+    display: flex;
+    flex-direction: row;
+    margin-right: 2rem;
+}
+
+#page_tray {
+    color: white;
+    margin: auto 1.5rem auto 1rem;
+}
+
+#page_logo {
+    flex-grow: 1;
+    vertical-align: top;
+    margin: auto;
+    font-size: 18pt;
+}
+
+#page_navigation .nav-link {
+    display: block;
+    text-align: center;
+    margin: 0 1rem;
+    cursor: pointer;
+    color: rgb(108, 117, 125);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#page_navigation .nav-link:hover {
+    color: white;
+}
+
+#page_navigation .nav-link:active {
+    color: #2470dc;
+}
+
+#page_navigation .nav-link.selected, 
+#page_navigation .nav-link.selected:hover, 
+#page_navigation .nav-link.selected:active {
+    color: white;
+    cursor: default;
+}
+
+#page_navigation .nav-link svg {
+    display: block;
+    margin: auto;
+}
+
+#page_content {
+    min-height: calc(100vh - 125px);
+    display: flow-root;
+}
+
+#page_footer {
+    background-color: rgb(248, 249, 250);
+    border-top-color: rgb(222, 226, 230);
+    border-top-width: 1px;
+    border-top-style: solid;
+    color: rgba(33, 37, 41, 0.75);
+    display: flex;
+    padding: 1rem;
+}
+
+#page_footer .left {
+    flex-grow: 1;
+    margin: auto;
+}
