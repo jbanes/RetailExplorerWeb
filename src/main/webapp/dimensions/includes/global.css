@@ -70,14 +70,17 @@ body {
     color: rgb(108, 117, 125);
     user-select: none;
     -webkit-user-select: none;
+    padding: 2px 2px 0px 0px ;
 }
 
 #page_navigation .nav-link:hover {
     color: white;
+    padding: 0px 0px 2px 2px;
 }
 
 #page_navigation .nav-link:active {
     color: #2470dc;
+    padding: 2px 2px 0px 0px;
 }
 
 #page_navigation .nav-link.selected, 
@@ -85,6 +88,7 @@ body {
 #page_navigation .nav-link.selected:active {
     color: white;
     cursor: default;
+    padding: 0px 0px 2px 2px;
 }
 
 #page_navigation .nav-link svg {
@@ -93,7 +97,7 @@ body {
 }
 
 #page_content {
-    min-height: calc(100vh - 125px);
+    min-height: calc(100vh - 115px);
     display: flow-root;
 }
 
@@ -104,7 +108,7 @@ body {
     border-top-style: solid;
     color: rgba(33, 37, 41, 0.75);
     display: flex;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 
 #page_footer .left {
@@ -116,7 +120,7 @@ body {
     color: rgba(33, 37, 41, 0.75);
     display: inline-block;
     text-decoration: none;
-    margin: 0.25rem;
+    margin: 0.4rem 0.4rem 0rem 0.4rem;
 }
 
 #page_footer a svg {
