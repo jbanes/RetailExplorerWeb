@@ -32,17 +32,44 @@
             });
     });
 </script>
-<h1>Franchises</h1>
-<table id="franchises">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>International</th>
-            <th>Products</th>
-            <th>Stores</th>
-            <th>Employees</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+<style>
+    .layout {
+        display: flex;
+    }
+    
+    .sidebar {
+        background-color: rgb(248, 249, 250);
+        border-right: 1px solid rgb(222, 226, 230);
+        padding: 1rem;
+        margin-right: 2rem;
+        height: calc(var(--page-content-height) - 2rem);
+    }
+    
+    .dimension {
+        flex-grow: 1;
+    }
+</style>
+<div class="layout">
+    <div class="sidebar">
+        <div>Home</div>
+        <div>Franchises</div>
+        <div>Brands</div>
+        <div>Categories</div>
+    </div>
+    <div class="dimension">
+        <h1>Franchises</h1>
+        <table id="franchises">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>International</th>
+                    <th>Products</th>
+                    <th>Stores</th>
+                    <th>Employees</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
 <jsp:include page="includes/footer.jsp" />

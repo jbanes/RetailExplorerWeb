@@ -96,8 +96,12 @@ body {
     margin: auto;
 }
 
+:root {
+  --page-content-height: calc(100vh - 115px);
+}
+
 #page_content {
-    min-height: calc(100vh - 115px);
+    min-height: var(--page-content-height);
     display: flow-root;
 }
 
