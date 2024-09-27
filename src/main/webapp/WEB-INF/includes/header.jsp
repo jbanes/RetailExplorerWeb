@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="root" value="${pageContext.request.contextPath}" scope="page" />
+<c:set var="url" value="${pageContext.request.requestURL}" scope="page" />
 <html lang="en">
 <header>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Retail Explorer</title>
-    <link href="${pageContext.request.contextPath}/css/global.css" rel="stylesheet">
+    <link href="${root}/css/global.css" rel="stylesheet">
 </header>
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="nodisplay" style="color: white;">
@@ -45,25 +47,25 @@
         <div id="page_logo">Retail Explorer</div>
         <div id="page_navigation">
             <div>
-                <a class="nav-link ${fn:contains(pageContext.request.requestURL, "/home/") ? "selected" : ""}">
+                <a class="nav-link ${fn:contains(url, "/home/") ? "selected" : ""}" href="${root}/home/index.jsp">
                    <svg width="24" height="24"><use xlink:href="#home"></use></svg>
                     Home
                 </a>
             </div>
             <div>
-                <a class="nav-link ${fn:contains(pageContext.request.requestURL, "/dimensions/") ? "selected" : ""}">
+                <a class="nav-link ${fn:contains(url, "/dimensions/") ? "selected" : ""}" href="${root}/dimensions/index.jsp">
                    <svg width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
                     Dimensions
                 </a>
             </div>
             <div>
-                <a class="nav-link ${fn:contains(pageContext.request.requestURL, "/dashboards/") ? "selected" : ""}">
+                <a class="nav-link ${fn:contains(url, "/dashboards/") ? "selected" : ""}">
                    <svg width="24" height="24"><use xlink:href="#table"></use></svg>
                     Dashboards
                 </a>
             </div>
             <div>
-                <a class="nav-link ${fn:contains(pageContext.request.requestURL, "/analytics/") ? "selected" : ""}">
+                <a class="nav-link ${fn:contains(url, "/analytics/") ? "selected" : ""}">
                    <svg width="24" height="24"><use xlink:href="#grid"></use></svg>
                     Analytics
                 </a>
