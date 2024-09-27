@@ -70,4 +70,28 @@
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById("page_tray").onclick = function() {
+            var el = document.querySelector(".sidebar");
+            
+            if(el.style.display === 'none') 
+            {   
+                el.classList.add("slide-in");
+                el.style.display = '';
+                
+                setTimeout(function() { 
+                    el.classList.remove("slide-in");
+                }, 500);
+            }
+            else 
+            {
+                el.classList.add("slide-out");
+                
+                setTimeout(function() { 
+                    el.style.display = 'none'; 
+                    el.classList.remove("slide-out");
+                }, 500);
+            }
+        };
+    </script>
     <div id="page_content">

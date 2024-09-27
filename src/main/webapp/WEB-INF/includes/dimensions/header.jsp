@@ -12,11 +12,11 @@
         background-color: rgb(248, 249, 250);
         border-right: 1px solid rgb(222, 226, 230);
         padding: 1rem;
-        margin-right: 1rem;
         min-height: calc(var(--page-content-height) - 2rem);
     }
     
     .dimension {
+        margin-left: 1rem;
         flex-grow: 1;
     }
     
