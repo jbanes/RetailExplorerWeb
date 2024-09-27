@@ -32,8 +32,11 @@
 
                 var tbody = $("#products tbody");
 
-                products.forEach(function(product) {
+                products.forEach(function(product, index) {
                     var tr = $("<tr>");
+                    
+                    // Display limit for testing
+                    if(index >= 1000) return false;
 
                     tr.append($("<td>").text(product.Name));
                     tr.append($("<td>").text(product.Price));

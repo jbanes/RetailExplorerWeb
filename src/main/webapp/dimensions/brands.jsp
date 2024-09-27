@@ -8,7 +8,7 @@
 
                 var tbody = $("#brands tbody");
 
-                brands.forEach(function(brand) {
+                brands.forEach(function(brand, index) {
                     var tr = $("<tr>");
                     var cagtegoriesLink = $("<a>")
                             .attr("href", "categories.jsp?brand=" + brand.id)
@@ -16,6 +16,9 @@
                     var productsLink = $("<a>")
                             .attr("href", "products.jsp?brand=" + brand.id)
                             .text(brand.Products);
+                    
+                    // Display limit for testing
+                    if(index >= 1000) return false;
 
                     tr.append($("<td>").text(brand.Name));
                     tr.append($("<td>").append(cagtegoriesLink));
