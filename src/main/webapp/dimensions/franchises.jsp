@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<jsp:include page="includes/header.jsp" />
+<jsp:include page="../WEB-INF/includes/header.jsp" />
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -151,4 +151,4 @@
         </table>
     </div>
 </div>
-<jsp:include page="includes/footer.jsp" />
+<jsp:include page="../WEB-INF/includes/footer.jsp" />

@@ -6,7 +6,7 @@
 <header>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Retail Explorer</title>
-    <link href="includes/global.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/global.css" rel="stylesheet">
 </header>
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="nodisplay" style="color: white;">
