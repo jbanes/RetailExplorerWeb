@@ -35,12 +35,22 @@
         cursor: pointer;
     }
     
+    .sidebar > a > div.disabled {
+        background-color: transparent !important;
+        color: rgb(178, 187, 195) !important;
+        cursor: default !important;
+    }
+    
     .sidebar > a > div.selected {
         background-color: #2494fc;
     }
     
     .sidebar > a > div:hover {
         background-color: #0474dc;
+    }
+    
+    .sidebar > a > div.level1 {
+        padding: 4px 4px 4px 28px;
     }
     
     .sidebar > a {
@@ -83,27 +93,73 @@
         </a>
         <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/franchises.jsp')}" scope="page" />
         <c:set var="child" value="${fn:contains(pageContext.request.requestURL, '/stores.jsp') or fn:contains(pageContext.request.requestURL, '/employees.jsp')}" scope="page" />
+        <c:set var="child" value="${child or (fn:contains(pageContext.request.requestURL, '/products.jsp') and fn:contains(pageContext.request.queryString, 'franchise='))}" scope="page" />
         <a href="franchises.jsp">
             <div class="${selected ? "selected" : ""}">
                 <svg><use xlink:href="${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
                 Franchises
             </div>
         </a>
+        <c:if test="${child}">
+            <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/employees.jsp')}" scope="page" />
+            <a href="#">
+                <div class="${selected ? "selected" : "disabled"} level1">
+                    <svg><use xlink:href="#table"></use></svg>
+                    Employees
+                </div>
+            </a>
+            <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/products.jsp')}" scope="page" />
+            <a href="#">
+                <div class="${selected ? "selected" : "disabled"} level1">
+                    <svg><use xlink:href="#table"></use></svg>
+                    Products <!-- ${pageContext.request.queryString} -->
+                </div>
+            </a>
+            <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/stores.jsp')}" scope="page" />
+            <a href="#">
+                <div class="${selected ? "selected" : "disabled"} level1">
+                    <svg><use xlink:href="#table"></use></svg>
+                    Stores
+                </div>
+            </a>
+        </c:if>
         <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/brands.jsp')}" scope="page" />
+        <c:set var="child" value="${fn:contains(pageContext.request.requestURL, '/products.jsp') and fn:contains(pageContext.request.queryString, 'brand=')}" scope="page" />
         <a href="brands.jsp">
             <div class="${selected ? "selected" : ""}">
-                <svg><use xlink:href="${selected ? "#chevron-down" : "#chevron-right"}"></use></svg>
+                <svg><use xlink:href="${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
                 Brands
             </div>
         </a>
+        <c:if test="${child}">
+            <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/products.jsp')}" scope="page" />
+            <a href="#">
+                <div class="${selected ? "selected" : ""} level1">
+                    <svg><use xlink:href="#table"></use></svg>
+                    Products
+                </div>
+            </a>
+        </c:if>
         <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/categories.jsp')}" scope="page" />
-        <c:set var="child" value="${fn:contains(pageContext.request.requestURL, '/products.jsp')}" scope="page" />
+        <c:set var="products_page" value="${fn:contains(pageContext.request.requestURL, '/products.jsp')}" scope="page" />
+        <c:set var="child" value="${products_page and fn:contains(pageContext.request.queryString, 'category=')}" scope="page" />
+        <c:set var="child" value="${child or (products_page and fn:contains(pageContext.request.queryString, 'type='))}" scope="page" />
+        <c:set var="child" value="${child or (products_page and fn:contains(pageContext.request.queryString, 'subtype='))}" scope="page" />
         <a href="categories.jsp">
             <div class="${selected ? "selected" : ""}">
                 <svg><use xlink:href="${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
                 Categories
             </div>
         </a>
+        <c:if test="${child}">
+            <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/products.jsp')}" scope="page" />
+            <a href="#">
+                <div class="${selected ? "selected" : ""} level1">
+                    <svg><use xlink:href="#table"></use></svg>
+                    Products
+                </div>
+            </a>
+        </c:if>
     </div>
     <div class="dimension">
 
