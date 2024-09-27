@@ -83,7 +83,7 @@
                 
                 setTimeout(function() { 
                     el.classList.remove("slide-in");
-                }, 500);
+                }, 300);
             }
             else 
             {
@@ -92,7 +92,7 @@
                 setTimeout(function() { 
                     el.style.display = 'none'; 
                     el.classList.remove("slide-out");
-                }, 500);
+                }, 300);
             }
         };
     </script>
