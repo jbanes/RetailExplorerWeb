@@ -17,6 +17,7 @@
     
     .dimension {
         margin-left: 1rem;
+        margin-right: 1rem;
         flex-grow: 1;
     }
     
