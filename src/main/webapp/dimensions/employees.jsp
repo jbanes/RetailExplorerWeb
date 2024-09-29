@@ -12,6 +12,7 @@
     <c:if test="${not empty param.store}">
         params.push("store=<c:out value="${param.store}" />");
     </c:if>
+        
     $(document).ready(function() {
         fetch("/services/dimensions/employees?" + params.join('&'))
             .then(response => response.json())
