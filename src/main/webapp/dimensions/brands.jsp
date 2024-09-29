@@ -5,39 +5,19 @@
         fetch("/services/dimensions/brands")
             .then(response => response.json())
             .then(function(brands) {
-
-                var tbody = $("#brands tbody");
-
-                brands.forEach(function(brand, index) {
-                    var tr = $("<tr>");
-                    var cagtegoriesLink = $("<a>")
-                            .attr("href", "categories.jsp?brand=" + brand.id)
-                            .text(brand.Categories);
-                    var productsLink = $("<a>")
-                            .attr("href", "products.jsp?brand=" + brand.id)
-                            .text(brand.Products);
-                    
-                    // Display limit for testing
-                    if(index >= 1000) return false;
-
-                    tr.append($("<td>").text(brand.Name));
-                    tr.append($("<td>").append(cagtegoriesLink));
-                    tr.append($("<td>").append(productsLink));
-
-                    tbody.append(tr);
-                });
+                document.getElementById("brands").data(brands);
             });
     });
 </script>
 <h1>Brands</h1>
-<table id="brands">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Categories</th>
-            <th>Products</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+<paginated-table id="brands">
+    <columns>
+        <column>Name</column>
+        <column href="categories.jsp?brand={id}">Categories</column>
+        <column href="products.jsp?brand={id}">Products</column>
+    </columns>
+</paginated-table> 
+<paginated-table-pager id="pager" table="#brands">
+    
+</paginated-table-pager>
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />

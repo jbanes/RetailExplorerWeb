@@ -5,43 +5,21 @@
         fetch("/services/dimensions/franchises")
             .then(response => response.json())
             .then(function(franchises) {
-
-                var tbody = $("#franchises tbody");
-
-                franchises.forEach(function(franchise) {
-                    var tr = $("<tr>");
-                    var productsLink = $("<a>")
-                            .attr("href", "products.jsp?franchise=" + franchise.id)
-                            .text(franchise.Products);
-                    var storesLink = $("<a>")
-                            .attr("href", "stores.jsp?franchise=" + franchise.id)
-                            .text(franchise.Stores);
-                    var employeesLink = $("<a>")
-                            .attr("href", "employees.jsp?franchise=" + franchise.id)
-                            .text(franchise.Products);
-
-                    tr.append($("<td>").text(franchise.Name));
-                    tr.append($("<td>").text(franchise.International));
-                    tr.append($("<td>").append(productsLink));
-                    tr.append($("<td>").append(storesLink));
-                    tr.append($("<td>").append(employeesLink));
-
-                    tbody.append(tr);
-                });
+                document.getElementById("franchises").data(franchises);
             });
     });
 </script>
 <h1>Franchises</h1>
-<table id="franchises">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>International</th>
-            <th>Products</th>
-            <th>Stores</th>
-            <th>Employees</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+<paginated-table id="franchises">
+    <columns>
+        <column>Name</column>
+        <column>International</column>
+        <column href="products.jsp?franchise={id}" type="number">Products</column>
+        <column href="stores.jsp?franchise={id}" type="number">Stores</column>
+        <column href="employees.jsp?franchise={id}" type="number">Employees</column>
+    </columns>
+</paginated-table> 
+<paginated-table-pager id="pager" table="#franchises">
+    
+</paginated-table-pager>
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />
