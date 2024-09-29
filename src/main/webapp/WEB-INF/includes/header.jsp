@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<c:set var="root" value="${pageContext.request.contextPath}" scope="page" />
+<c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
 <c:set var="url" value="${pageContext.request.requestURL}" scope="page" />
 <html lang="en">
 <header>

@@ -18,8 +18,9 @@
         <column href="stores.jsp?franchise={id}" type="number">Stores</column>
         <column href="employees.jsp?franchise={id}" type="number">Employees</column>
     </columns>
+    <link href="${root}/css/table.css" rel="stylesheet" type="text/css">
 </paginated-table> 
 <paginated-table-pager id="pager" table="#franchises">
-    
+    <link href="${root}/css/pager.css" rel="stylesheet" type="text/css">
 </paginated-table-pager>
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />

@@ -16,8 +16,9 @@
         <column href="categories.jsp?brand={id}">Categories</column>
         <column href="products.jsp?brand={id}">Products</column>
     </columns>
+    <link href="${root}/css/table.css" rel="stylesheet" type="text/css">
 </paginated-table> 
 <paginated-table-pager id="pager" table="#brands">
-    
+    <link href="${root}/css/pager.css" rel="stylesheet" type="text/css">
 </paginated-table-pager>
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />

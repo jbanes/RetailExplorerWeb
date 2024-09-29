@@ -85,9 +85,10 @@ class PaginatedTable extends HTMLElement
     connectedCallback()
     {
         var columns = [];
+        var shadow = this.attachShadow({ mode: "open" })
         var tr;
         
-        this.#shadow = this.attachShadow({ mode: "open" });
+        this.#shadow = shadow;
         this.#table = document.createElement("table");
         this.#thead = document.createElement("thead");
         this.#tbody = document.createElement("tbody");
@@ -96,6 +97,11 @@ class PaginatedTable extends HTMLElement
         
         this.childNodes.forEach(function(element) {
             var index = 0;
+            
+            if(element.nodeName === "LINK")
+            {
+                shadow.appendChild(element);
+            }
             
             if(element.nodeName === "COLUMNS")
             {

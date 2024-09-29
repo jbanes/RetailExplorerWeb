@@ -29,8 +29,9 @@
         <column>Sex</column>
         <column key="StoreNumber" type="number">Store Number</column>
     </columns>
+    <link href="${root}/css/table.css" rel="stylesheet" type="text/css">
 </paginated-table>
 <paginated-table-pager id="pager" table="#employees">
-    
+    <link href="${root}/css/pager.css" rel="stylesheet" type="text/css">
 </paginated-table-pager>
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />

@@ -42,16 +42,20 @@ class PaginatedTablePager extends HTMLElement
     
     connectedCallback()
     {
-        this.#shadow = this.attachShadow({ mode: "open" });
+        var shadow = this.attachShadow({ mode: "open" });
+        
+        this.#shadow = shadow;
         this.#top = document.createElement("div");
         
-        // TODO: This should all be handled by CSS stylesheet
-        this.#top.style["user-select"] = "none";
-        this.#top.style["-webkit-user-select"] = "none";
-        this.#top.style["display"] = "flex";
-        this.#top.style["justify-content"] = "space-around";
-        this.#top.style["cursor"] = "pointer";
-        this.#top.style["font-size"] = "80%";
+        this.#top.classList.add("pager");
+        
+        this.childNodes.forEach(function(element) {
+            
+            if(element.nodeName === "LINK")
+            {
+                shadow.appendChild(element);
+            }
+        });
         
         this.#shadow.appendChild(this.#top);
     }
@@ -89,17 +93,23 @@ class PaginatedTablePager extends HTMLElement
         var number;
         
         var first = document.createElement("div");
-        var left = document.createElement("div");
+        var previous = document.createElement("div");
         var numbers = document.createElement("div");
-        var right = document.createElement("div");
+        var next = document.createElement("div");
         var last = document.createElement("div");
         
+        
+        first.classList.add("control", "first");
+        previous.classList.add("control", "previous");
+        numbers.classList.add("numbers");
+        next.classList.add("control", "next");
+        last.classList.add("control", "last");
         
         // We're not yet attached
         if(!this.#top) return;
         
         first.innerHTML = "&laquo;";
-        left.innerHTML = "&lsaquo;";
+        previous.innerHTML = "&lsaquo;";
         
         for(var i=0; i<pages && start+i<total; i++)
         {
@@ -111,6 +121,7 @@ class PaginatedTablePager extends HTMLElement
                 number.style["font-weight"] = "bold"; //TODO: Need css styling instead
             }
             
+            number.classList.add("number");
             number.innerText = format.format(start+i+1);
             number.onclick = function(page) { 
                 return function() { that.table().page(page); };
@@ -118,22 +129,20 @@ class PaginatedTablePager extends HTMLElement
             
             numbers.appendChild(number);
         }
-        
-        numbers.style["display"] = "contents";
-        
-        right.innerHTML = "&rsaquo;";
+
+        next.innerHTML = "&rsaquo;";
         last.innerHTML = "&raquo;";
         
         first.onclick = function() { that.table().page(0); };
-        left.onclick = function() { that.table().page(that.table().page()-1); };
-        right.onclick = function() { that.table().page(that.table().page()+1); };
+        previous.onclick = function() { that.table().page(that.table().page()-1); };
+        next.onclick = function() { that.table().page(that.table().page()+1); };
         last.onclick = function() { that.table().page(that.table().pages()); };
         
         this.#top.replaceChildren();
         this.#top.appendChild(first);
-        this.#top.appendChild(left);
+        this.#top.appendChild(previous);
         this.#top.appendChild(numbers);
-        this.#top.appendChild(right);
+        this.#top.appendChild(next);
         this.#top.appendChild(last);
     }
 }
