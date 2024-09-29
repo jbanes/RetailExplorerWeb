@@ -26,7 +26,7 @@
     <columns>
         <column>Firstname</column>
         <column>Lastname</column>
-        <column>Sex</column>
+        <column type="centered">Sex</column>
         <column key="StoreNumber" type="number">Store Number</column>
     </columns>
     <link href="${root}/css/table.css" rel="stylesheet" type="text/css">

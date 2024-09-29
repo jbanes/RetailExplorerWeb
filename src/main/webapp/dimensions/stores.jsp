@@ -14,8 +14,8 @@
 <paginated-table id="stores" page-size="10">
     <columns>
         <column>Name</column>
+        <column key="CountryCode" type="centered">Country Code</column>
         <column key="StoreNumber" type="number">Store Number</column>
-        <column key="CountryCode">Country Code</column>
         <column href="employees.jsp?franchise=${param.franchise}&store={id}" type="number">Employees</column>
     </columns>
     <link href="${root}/css/table.css" rel="stylesheet" type="text/css">

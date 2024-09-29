@@ -37,11 +37,11 @@
 <paginated-table id="products">
     <columns>
         <column>Name</column>
-        <column>Price</column>
         <column key="BrandName">Brand</column>
         <column key="CategoryName">Category</column>
         <column>Type</column>
         <column>SubType</column>
+        <column type="number">Price</column>
     </columns>
     <link href="${root}/css/table.css" rel="stylesheet" type="text/css">
 </paginated-table> 

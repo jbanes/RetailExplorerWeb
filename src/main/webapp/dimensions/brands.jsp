@@ -13,8 +13,8 @@
 <paginated-table id="brands">
     <columns>
         <column>Name</column>
-        <column href="categories.jsp?brand={id}">Categories</column>
-        <column href="products.jsp?brand={id}">Products</column>
+        <column href="categories.jsp?brand={id}" type="number">Categories</column>
+        <column href="products.jsp?brand={id}" type="number">Products</column>
     </columns>
     <link href="${root}/css/table.css" rel="stylesheet" type="text/css">
 </paginated-table> 

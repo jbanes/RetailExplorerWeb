@@ -54,6 +54,10 @@ class PaginatedTable extends HTMLElement
             value = new Intl.NumberFormat().format(value);
 
             PaginatedTable.defaultRenderers.string(element, column, value, record);
+        },
+        "centered": function(element, column, value, record) {
+            
+            PaginatedTable.defaultRenderers.string(element, column, value, record);
         }
     };
     
@@ -129,14 +133,11 @@ class PaginatedTable extends HTMLElement
         this.#columns = columns;
         tr = document.createElement("tr");
         
-        // TODO: Need a stylesheet instead
-        tr.style["text-align"] = "left";
-        
         columns.forEach(function(column, index) {
             var th = document.createElement("th");
             
             th.innerText = column.name;
-            
+            th.classList.add(column.type);
             tr.appendChild(th);
         });
         

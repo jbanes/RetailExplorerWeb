@@ -30,6 +30,24 @@ table {
     white-space: nowrap;
 }
 
+table thead tr {
+    text-align: left;
+}
+
+table thead tr th {
+    padding: 4px 6px;
+}
+
+table thead tr th.number {
+    width: 128px;
+    text-align: right;
+}
+
+table thead tr th.centered {
+    width: 160px;
+    text-align: center;
+}
+
 table tbody {
     min-height: var(--tbody-height);
 }
@@ -42,4 +60,14 @@ table tbody tr td {
 
 table tbody tr td.empty {
     border-bottom: 1px solid transparent;
+}
+
+table tbody tr td.number {
+    width: 128px;
+    text-align: right;
+}
+
+table tbody tr td.centered {
+    width: 160px;
+    text-align: center;
 }
