@@ -16,10 +16,7 @@
         fetch("/services/dimensions/employees?" + params.join('&'))
             .then(response => response.json())
             .then(function(employees) {
-var time = new Date().getTime();
                 document.getElementById("employees").data(employees);
-time = new Date().getTime() - time;
-console.log(time + "ms");
             });
     });
 </script>
@@ -29,7 +26,7 @@ console.log(time + "ms");
         <column>Firstname</column>
         <column>Lastname</column>
         <column>Sex</column>
-        <column key="StoreNumber">Store Number</column>
+        <column key="StoreNumber" type="number">Store Number</column>
     </columns>
 </paginated-table>
 <paginated-table-pager id="pager" table="#employees">

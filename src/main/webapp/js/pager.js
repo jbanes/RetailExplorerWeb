@@ -84,6 +84,8 @@ class PaginatedTablePager extends HTMLElement
         var selected = this.#table.page();
         var total = this.#table.pages();
         var start = Math.max(0, selected - Math.floor(this.#pages / 2) + 1);
+        
+        var format = new Intl.NumberFormat();
         var number;
         
         var first = document.createElement("div");
@@ -109,7 +111,7 @@ class PaginatedTablePager extends HTMLElement
                 number.style["font-weight"] = "bold"; //TODO: Need css styling instead
             }
             
-            number.innerText = (start+i+1);
+            number.innerText = format.format(start+i+1);
             number.onclick = function(page) { 
                 return function() { that.table().page(page); };
             }(start+i);

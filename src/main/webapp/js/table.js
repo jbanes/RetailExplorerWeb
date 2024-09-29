@@ -24,6 +24,58 @@ class PaginatedTable extends HTMLElement
 {
     static observedAttributes = ["page-size", "page"];
     
+    static defaultRenderers = {
+        "string": function(element, column, value, record) {
+
+            var a;
+            var link;
+            
+            if(column.href)
+            {
+                a = document.createElement("a");
+                link = column.href;
+                
+                Object.keys(record).forEach(function(key) {
+                    link = link.replaceAll("{" + key + "}", record[key]);
+                });
+                
+                a.setAttribute("href", link);
+                a.innerText = value;
+                
+                element.appendChild(a);
+                
+                return;
+            }
+            
+            element.innerText = value;
+        },
+        "number": function(element, column, value, record) {
+            
+            value = new Intl.NumberFormat().format(value);
+
+            PaginatedTable.defaultRenderers.string(element, column, value, record);
+        
+//            if(column.href)
+//            {
+//                a = document.createElement("a");
+//                link = column.href;
+//                
+//                Object.keys(record).forEach(function(key) {
+//                    link = link.replaceAll("{" + key + "}", record[key]);
+//                });
+//                
+//                a.setAttribute("href", link);
+//                a.innerText = new Intl.NumberFormat().format(value);
+//                
+//                element.appendChild(a);
+//                
+//                return;
+//            }
+            
+//            element.innerText = new Intl.NumberFormat().format(value);
+        }
+    };
+    
     #shadow;
     #table;
     #thead;
@@ -72,11 +124,16 @@ class PaginatedTable extends HTMLElement
                     
                     if(element.nodeName !== "COLUMN") return;
                     
+                    var key = element.attributes["key"] && element.attributes["key"].nodeValue.trim() || element.innerText.trim();
+                    var type = element.attributes["type"] && element.attributes["type"].nodeValue.trim().toLowerCase() || "string";
+                    
                     columns[index++] = {
-                        "key": element.attributes["key"] && element.attributes["key"].nodeValue || element.innerText,
+                        "key": key,
                         "name": element.innerText,
-                        "type": element.attributes["type"] && element.attributes["type"].nodeValue.toLowerCase() || "string",
-                        "element": element
+                        "type": type,
+                        "element": element,
+                        "renderer": PaginatedTable.defaultRenderers[type],
+                        "href": element.attributes["href"] && element.attributes["href"].nodeValue || null
                     };
                 });
             }
@@ -84,6 +141,9 @@ class PaginatedTable extends HTMLElement
         
         this.#columns = columns;
         tr = document.createElement("tr");
+        
+        // TODO: Need a stylesheet instead
+        tr.style["text-align"] = "left";
         
         columns.forEach(function(column, index) {
             var th = document.createElement("th");
@@ -189,6 +249,7 @@ class PaginatedTable extends HTMLElement
         var end = start + this.#pageSize;
         var rows = [];
         var column;
+        var text;
         
         var tr;
         var td;
@@ -204,8 +265,9 @@ class PaginatedTable extends HTMLElement
             {
                 td = document.createElement("td");
                 column = this.#columns[j];
+                text = column.renderer(td, column, this.#records[start+i][column.key], this.#records[start+i]);
                 
-                td.innerText = this.#records[start+i][column.key];
+//                td.innerText = this.#records[start+i][column.key];
                 
                 tr.appendChild(td);
             }
