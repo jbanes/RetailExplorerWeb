@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="../WEB-INF/includes/dimensions/header.jsp" />
 <script>
-    $(document).ready(function() {var params = [];
+    $(document).ready(function() {
 
         var params = [];
 
@@ -18,39 +18,19 @@
         fetch("/services/dimensions/categories?" + params.join('&'))
             .then(response => response.json())
             .then(function(categories) {
-
-                var tbody = $("#categories tbody");
-
-                categories.forEach(function(category) {
-                    var tr = $("<tr>");
-                    var productsLink = $("<a>")
-                            .attr("href", "products.jsp?category=" + category.Name)
-                            .text(category.Name);
-                    var typeLink = $("<a>")
-                            .attr("href", "products.jsp?category=" + category.Name + "&type=" + category.Type)
-                            .text(category.Type);
-                    var subTypeLink = $("<a>")
-                            .attr("href", "products.jsp?subtype=" + category.id)
-                            .text(category.SubType);
-
-                    tr.append($("<td>").append(productsLink));
-                    tr.append($("<td>").append(typeLink));
-                    tr.append($("<td>").append(subTypeLink));
-
-                    tbody.append(tr);
-                });
+                document.getElementById("categories").data(categories);
             });
     });
 </script>
 <h1>Categories</h1>
-<table id="categories">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>SubType</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+<paginated-table id="categories">
+    <columns>
+        <column href="products.jsp?category={Name}">Name</column>
+        <column href="products.jsp?category={Name}&type={Type}">Type</column>
+        <column href="products.jsp?subtype={id}">SubType</column>
+    </columns>
+</paginated-table> 
+<paginated-table-pager id="pager" table="#categories">
+    
+</paginated-table-pager>
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />
