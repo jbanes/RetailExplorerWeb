@@ -29,39 +29,22 @@
         fetch("/services/dimensions/products?" + params.join('&'))
             .then(response => response.json())
             .then(function(products) {
-
-                var tbody = $("#products tbody");
-
-                products.forEach(function(product, index) {
-                    var tr = $("<tr>");
-                    
-                    // Display limit for testing
-                    if(index >= 1000) return false;
-
-                    tr.append($("<td>").text(product.Name));
-                    tr.append($("<td>").text(product.Price));
-                    tr.append($("<td>").text(product.BrandName));
-                    tr.append($("<td>").text(product.CategoryName));
-                    tr.append($("<td>").text(product.Type));
-                    tr.append($("<td>").text(product.SubType));
-
-                    tbody.append(tr);
-                });
+                document.getElementById("products").data(products);
             });
     });
 </script>
 <h1>Products</h1>
-<table id="products">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Brand</th>
-            <th>Category</th>
-            <th>Type</th>
-            <th>SubType</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+<paginated-table id="products">
+    <columns>
+        <column>Name</column>
+        <column>Price</column>
+        <column key="BrandName">Brand</column>
+        <column key="CategoryName">Category</column>
+        <column>Type</column>
+        <column>SubType</column>
+    </columns>
+</paginated-table> 
+<paginated-table-pager id="pager" table="#products">
+    
+</paginated-table-pager>
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />
