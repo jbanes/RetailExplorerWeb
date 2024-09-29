@@ -115,13 +115,7 @@ class PaginatedTablePager extends HTMLElement
         {
             number = document.createElement("div");
             
-            if(start+i === selected)
-            {
-                number.classList.add("selected");
-                number.style["font-weight"] = "bold"; //TODO: Need css styling instead
-            }
-            
-            number.classList.add("number");
+            number.classList.add("number", ((start+i === selected) ? "selected" : null));
             number.innerText = format.format(start+i+1);
             number.onclick = function(page) { 
                 return function() { that.table().page(page); };

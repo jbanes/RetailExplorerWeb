@@ -25,11 +25,11 @@ div.pager {
     user-select: none;
     -webkit-user-select: none;
     cursor: default;
-    margin: 5px 10px;
+    margin: 15px 10px;
 }
 
 div.control {
-    font-size: 125%;
+    font-size: 145%;
     padding: 2px 6px;
     cursor: pointer;
 }

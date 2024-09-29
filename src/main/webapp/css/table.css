@@ -20,13 +20,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+:root {
+    --row-height: 33px;
+    --tbody-height: 330px;
+}
+
 table {
     border-spacing: 0px;
     white-space: nowrap;
+}
+
+table tbody {
+    min-height: var(--tbody-height);
 }
 
 table tbody tr td {
     border-bottom: 1px solid #DDD;
     margin: 0px;
     padding: 4px 6px;
+}
+
+table tbody tr td.empty {
+    border-bottom: 1px solid transparent;
 }

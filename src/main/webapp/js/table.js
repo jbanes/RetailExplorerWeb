@@ -233,6 +233,7 @@ class PaginatedTable extends HTMLElement
         var page = Math.min(Math.max(0, this.#page), this.pages()-1);
 
         var start = page * this.#pageSize;
+        var lines = Math.min(this.#pageSize, this.#records.length);
         var rows = [];
         var column;
         var record;
@@ -243,7 +244,7 @@ class PaginatedTable extends HTMLElement
         // We're not yet attached
         if(!this.#table) return;
         
-        for(var i=0; i<this.#pageSize && start+i<this.#records.length; i++)
+        for(var i=0; i<lines; i++)
         {
             tr = document.createElement("tr");
             
@@ -253,7 +254,17 @@ class PaginatedTable extends HTMLElement
                 column = this.#columns[j];
                 record = this.#records[start+i];
                 
-                column.renderer(td, column, record[column.key], record);
+                if(start+i<this.#records.length)
+                {
+                    column.renderer(td, column, record[column.key], record);
+                    td.classList.add(column.type);
+                }
+                else
+                {
+                    // TODO: This approach feels a bit jank
+                    td.innerHTML = "&nbsp;";
+                    td.classList.add("empty");
+                }
                 
                 tr.appendChild(td);
             }
