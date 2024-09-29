@@ -54,25 +54,6 @@ class PaginatedTable extends HTMLElement
             value = new Intl.NumberFormat().format(value);
 
             PaginatedTable.defaultRenderers.string(element, column, value, record);
-        
-//            if(column.href)
-//            {
-//                a = document.createElement("a");
-//                link = column.href;
-//                
-//                Object.keys(record).forEach(function(key) {
-//                    link = link.replaceAll("{" + key + "}", record[key]);
-//                });
-//                
-//                a.setAttribute("href", link);
-//                a.innerText = new Intl.NumberFormat().format(value);
-//                
-//                element.appendChild(a);
-//                
-//                return;
-//            }
-            
-//            element.innerText = new Intl.NumberFormat().format(value);
         }
     };
     
@@ -206,7 +187,7 @@ class PaginatedTable extends HTMLElement
     
     pages()
     {
-        return Math.floor(this.#records.length / this.#pageSize) + 1;
+        return Math.max(1, Math.floor(this.#records.length / this.#pageSize) + (this.#records.length % this.#pageSize === 0 ? 0 : 1));
     }
     
     pageSize(pageSize)
@@ -246,10 +227,9 @@ class PaginatedTable extends HTMLElement
         var page = Math.min(Math.max(0, this.#page), this.pages()-1);
 
         var start = page * this.#pageSize;
-        var end = start + this.#pageSize;
         var rows = [];
         var column;
-        var text;
+        var record;
         
         var tr;
         var td;
@@ -265,9 +245,9 @@ class PaginatedTable extends HTMLElement
             {
                 td = document.createElement("td");
                 column = this.#columns[j];
-                text = column.renderer(td, column, this.#records[start+i][column.key], this.#records[start+i]);
+                record = this.#records[start+i];
                 
-//                td.innerText = this.#records[start+i][column.key];
+                column.renderer(td, column, record[column.key], record);
                 
                 tr.appendChild(td);
             }

@@ -83,7 +83,7 @@ class PaginatedTablePager extends HTMLElement
         var pages = Math.min(this.#pages, this.#table.pages());
         var selected = this.#table.page();
         var total = this.#table.pages();
-        var start = Math.max(0, selected - Math.floor(this.#pages / 2) + 1);
+        var start = Math.min(Math.max(0, total-this.#pages), Math.max(0, selected - Math.floor(this.#pages / 2) + 1));
         
         var format = new Intl.NumberFormat();
         var number;
