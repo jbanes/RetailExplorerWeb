@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../WEB-INF/includes/dimensions/header.jsp" />
 <script>
-    $(document).ready(function() {
+    document.addEventListener("DOMContentLoaded", function() {
 
         var params = [];
 

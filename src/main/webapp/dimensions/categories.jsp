@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="../WEB-INF/includes/dimensions/header.jsp" />
 <script>
-    $(document).ready(function() {
+    document.addEventListener("DOMContentLoaded", function() {
 
         var params = [];
 

@@ -13,7 +13,7 @@
         params.push("store=<c:out value="${param.store}" />");
     </c:if>
         
-    $(document).ready(function() {
+    document.addEventListener("DOMContentLoaded", function() {
         fetch("/services/dimensions/employees?" + params.join('&'))
             .then(response => response.json())
             .then(function(employees) {

@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="../header.jsp" />
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
 <style>
     .layout {
         display: flex;

@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="../WEB-INF/includes/dimensions/header.jsp" />
 <script>
-    $(document).ready(function() {
+    document.addEventListener("DOMContentLoaded", function() {
         fetch("/services/dimensions/franchises")
             .then(response => response.json())
             .then(function(franchises) {
