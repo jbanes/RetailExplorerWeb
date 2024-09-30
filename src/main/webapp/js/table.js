@@ -163,6 +163,26 @@ class PaginatedTable extends HTMLElement
         this.#disableCallback = false;
     }
     
+    first() 
+    {
+        this.page(0);
+    }
+    
+    previous() 
+    {
+        this.page(this.page()-1);
+    }
+    
+    next() 
+    {
+        this.page(this.page()+1);
+    }
+    
+    last() 
+    {
+        this.page(this.pages());
+    }
+    
     data(records)
     {
         var old = this.#records;

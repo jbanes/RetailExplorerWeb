@@ -127,10 +127,10 @@ class PaginatedTablePager extends HTMLElement
         next.innerHTML = "&rsaquo;";
         last.innerHTML = "&raquo;";
         
-        first.onclick = function() { that.table().page(0); };
-        previous.onclick = function() { that.table().page(that.table().page()-1); };
-        next.onclick = function() { that.table().page(that.table().page()+1); };
-        last.onclick = function() { that.table().page(that.table().pages()); };
+        first.onclick = function() { that.table().first(); };
+        previous.onclick = function() { that.table().previous(); };
+        next.onclick = function() { that.table().next(); };
+        last.onclick = function() { that.table().last(); };
         
         this.#top.replaceChildren();
         this.#top.appendChild(first);
