@@ -9,8 +9,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Retail Explorer</title>
     <link href="${root}/css/global.css" rel="stylesheet">
-    <script src="${root}/js/table.js" defer></script>
-    <script src="${root}/js/pager.js" defer></script>
+    <script src="${root}/emirgance/base/base.js"></script>
+    <script src="${root}/emirgance/paginated/table.js"></script>
+    <script src="${root}/emirgance/paginated/pager.js"></script>
 </header>
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="nodisplay" style="color: white;">

@@ -16,9 +16,9 @@
         <column href="categories.jsp?brand={id}" type="number">Categories</column>
         <column href="products.jsp?brand={id}" type="number">Products</column>
     </columns>
-    <link href="${root}/css/table.css" rel="stylesheet" type="text/css">
-</paginated-table> 
-<paginated-table-pager id="pager" table="#brands">
-    <link href="${root}/css/pager.css" rel="stylesheet" type="text/css">
-</paginated-table-pager>
+    <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
+</paginated-table>
+<paginated-pager id="pager" table="#brands">
+    <link href="${root}/emirgance/themes/base/paginated/pager.css" rel="stylesheet" type="text/css">
+</paginated-pager>
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />
