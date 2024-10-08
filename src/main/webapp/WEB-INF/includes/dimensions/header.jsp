@@ -75,24 +75,12 @@
         transform-origin: center;
     }
 </style>
-<svg xmlns="http://www.w3.org/2000/svg" class="nodisplay">
-    <symbol id="house-fill" viewBox="0 0 16 16">
-      <path fill="currentcolor" d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"></path>
-      <path fill="currentcolor" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"></path>
-    </symbol>
-    <symbol id="chevron-right" viewBox="0 0 16 16">
-        <path fill="currentcolor" fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
-    </symbol>
-    <symbol id="chevron-down" viewBox="0 0 16 16">
-        <path fill="currentcolor" fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
-    </symbol>
-</svg>
 <div class="layout">
     <div class="sidebar">
         <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/index.jsp')}" scope="page" />
         <a href="index.jsp">
             <div class="${selected ? "selected" : ""}">
-                    <svg><use xlink:href="#house-fill"></use></svg>
+                    <svg><use xlink:href="${root}/images/symbols.svg#house-fill"></use></svg>
                     Home
             </div>
         </a>
@@ -101,7 +89,7 @@
         <c:set var="child" value="${child or (fn:contains(pageContext.request.requestURL, '/products.jsp') and fn:contains(pageContext.request.queryString, 'franchise='))}" scope="page" />
         <a href="franchises.jsp">
             <div class="${selected ? "selected" : ""}">
-                <svg><use xlink:href="${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
+                <svg><use xlink:href="${root}/images/symbols.svg${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
                 Franchises
             </div>
         </a>
@@ -109,14 +97,14 @@
             <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/employees.jsp') and not fn:contains(pageContext.request.queryString, 'store=')}" scope="page" />
             <a href="employees.jsp?franchise=<c:out value="${param.franchise}" />">
                 <div class="${selected ? "selected" : ""} level1">
-                    <svg><use xlink:href="#table"></use></svg>
+                    <svg><use xlink:href="${root}/images/symbols.svg#table"></use></svg>
                     Employees
                 </div>
             </a>
             <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/products.jsp')}" scope="page" />
             <a href="products.jsp?franchise=<c:out value="${param.franchise}" />">
                 <div class="${selected ? "selected" : ""} level1">
-                    <svg><use xlink:href="#table"></use></svg>
+                    <svg><use xlink:href="${root}/images/symbols.svg#table"></use></svg>
                     Products
                 </div>
             </a>
@@ -124,7 +112,7 @@
             <c:set var="child" value="${fn:contains(pageContext.request.requestURL, '/employees.jsp') and fn:contains(pageContext.request.queryString, 'store=')}" scope="page" />
             <a href="stores.jsp?franchise=<c:out value="${param.franchise}" />">
                 <div class="${selected ? "selected" : ""} level1">
-                    <svg><use xlink:href="${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
+                    <svg><use xlink:href="${root}/images/symbols.svg${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
                     Stores
                 </div>
             </a>
@@ -132,7 +120,7 @@
                 <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/employees.jsp') and fn:contains(pageContext.request.queryString, 'store=')}" scope="page" />
                 <a href="employees.jsp?franchise=<c:out value="${param.franchise}" />&store=<c:out value="${param.store}" />">
                     <div class="${selected ? "selected" : ""} level2">
-                        <svg><use xlink:href="#table"></use></svg>
+                        <svg><use xlink:href="${root}/images/symbols.svg#table"></use></svg>
                         Employees
                     </div>
                 </a>
@@ -142,7 +130,7 @@
         <c:set var="child" value="${(fn:contains(pageContext.request.requestURL, '/products.jsp') or fn:contains(pageContext.request.requestURL, '/categories.jsp')) and fn:contains(pageContext.request.queryString, 'brand=')}" scope="page" />
         <a href="brands.jsp">
             <div class="${selected ? "selected" : ""}">
-                <svg><use xlink:href="${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
+                <svg><use xlink:href="${root}/images/symbols.svg${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
                 Brands
             </div>
         </a>
@@ -150,14 +138,14 @@
             <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/categories.jsp')}" scope="page" />
             <a href="categories.jsp?brand=<c:out value="${param.brand}" />">
                 <div class="${selected ? "selected" : ""} level1">
-                    <svg><use xlink:href="#table"></use></svg>
+                    <svg><use xlink:href="${root}/images/symbols.svg#table"></use></svg>
                     Categories
                 </div>
             </a>
             <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/products.jsp')}" scope="page" />
             <a href="products.jsp?brand=<c:out value="${param.brand}" />">
                 <div class="${selected ? "selected" : ""} level1">
-                    <svg><use xlink:href="#table"></use></svg>
+                    <svg><use xlink:href="${root}/images/symbols.svg#table"></use></svg>
                     Products
                 </div>
             </a>
@@ -169,7 +157,7 @@
         <c:set var="child" value="${child or (products_page and fn:contains(pageContext.request.queryString, 'subtype='))}" scope="page" />
         <a href="categories.jsp">
             <div class="${selected ? "selected" : ""}">
-                <svg><use xlink:href="${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
+                <svg><use xlink:href="${root}/images/symbols.svg${child ? "#chevron-down" : "#chevron-right"}"></use></svg>
                 Categories
             </div>
         </a>
@@ -177,7 +165,7 @@
             <c:set var="selected" value="${fn:contains(pageContext.request.requestURL, '/products.jsp')}" scope="page" />
             <a href="#">
                 <div class="${selected ? "selected" : ""} level1">
-                    <svg><use xlink:href="#table"></use></svg>
+                    <svg><use xlink:href="${root}/images/symbols.svg#table"></use></svg>
                     Products
                 </div>
             </a>
