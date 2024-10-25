@@ -1,12 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="../WEB-INF/includes/dimensions/header.jsp" />
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch("/services/dimensions/brands")
-            .then(response => response.json())
-            .then(function(brands) {
-                document.getElementById("brands").data(brands);
-            });
+    document.addEventListener("DOMContentLoaded", async function() {
+        var response = await fetch("/services/dimensions/brands");
+        var brands = await response.json();
+        
+        document.getElementById("brands").data(brands);
     });
 </script>
 <h1>Brands</h1>

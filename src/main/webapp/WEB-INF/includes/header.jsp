@@ -39,7 +39,7 @@
                 </a>
             </div>
             <div>
-                <a class="nav-link ${fn:contains(url, "/analytics/") ? "selected" : ""}">
+                <a class="nav-link ${fn:contains(url, "/analytics/") ? "selected" : ""}" href="${root}/analytics/index.jsp">
                    <svg width="24" height="24"><use xlink:href="${root}/images/symbols.svg#grid"></use></svg>
                     Analytics
                 </a>
