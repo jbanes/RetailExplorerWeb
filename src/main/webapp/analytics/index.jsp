@@ -81,6 +81,7 @@
     }
     
     .item-selection {
+        border-radius: 6px;
         min-width: 214px;
         min-height: 5lh;
         max-height: 10lh;
@@ -91,6 +92,7 @@
     }
     
     .item-selection .item {
+        cursor: pointer;
         padding: 4px 0px;
         margin: 2px 0px;
         user-select: none;
@@ -115,16 +117,34 @@
         margin: 4px 8px;
         vertical-align: middle;
     }
+    
+    .main {
+        flex-grow: 1;
+        padding: 1rem;
+    }
+    
+    .toolbar {
+        min-height: 1.5lh;
+        background-color: #f8f9fa;
+        margin: 1rem 0;
+    }
 </style>
 <script>
+    const svgns = "http://www.w3.org/2000/svg";
+    const xlinkns = "http://www.w3.org/1999/xlink";
+    const prefix = "${root}/images/symbols.svg";
+    
     document.addEventListener("DOMContentLoaded", async function() {
-        var prefix = "${root}/images/symbols.svg";
         
         var response = await fetch("/services/analytics/metadata");
         var metadata = await response.json();
         
         var dimensions = document.getElementById("dimensions");
         var measures = document.getElementById("measures");
+        var report = document.getElementById("report");
+        
+        var dimensionList = [];
+        var measureList = [];
         
         metadata.sort(function(left, right) {
             if(left.name > right.name) return 1;
@@ -135,15 +155,15 @@
         
         metadata.forEach(function(record) {
             var element = document.createElement("div");
-            var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            var use = document.createElementNS("http://www.w3.org/2000/svg", "use");;
+            var svg = document.createElementNS(svgns, "svg");
+            var use = document.createElementNS(svgns, "use");
             var selected = false;
             
             element.dataset.selected = selected;
             element.classList.add("item");
             element.classList.add(record.type);
             
-            use.setAttributeNS("http://www.w3.org/1999/xlink", "href", prefix + "#blank");
+            use.setAttributeNS(xlinkns, "href", prefix + "#blank");
             svg.appendChild(use);
             element.appendChild(svg);
             element.appendChild(document.createTextNode(record.name));
@@ -159,12 +179,36 @@
             }
             
             element.onclick = function() {
+                
+                var list = (record.type === "measure" ? measureList : dimensionList);
+
                 selected = !selected;
                 element.dataset.selected = selected;
                 
-                use.setAttributeNS("http://www.w3.org/1999/xlink", "href", prefix + (selected ? "#circle-check-solid" : "#blank"));
+                use.setAttributeNS(xlinkns, "href", prefix + (selected ? "#circle-check-solid" : "#blank"));
+                
+                if(selected) 
+                {
+                    list.push(record.name);
+                    report.addColumn(record.name, record.name, {"type": (record.type === "measure" ? "number" : "string")});
+                }
+                else 
+                {
+                    list.splice(dimensionList.indexOf(record.name), 1);
+                    report.removeColumn(record.name);
+                }
             };
         });
+        
+        document.getElementById("update").onclick = async function() {
+            var dimensions = dimensionList.length ? "dimensions=" + dimensionList.join("&dimensions=") : "";
+            var measures = measureList.length ? "measures=" + measureList.join("&measures=") : "";
+            
+            var response = await fetch("/services/analytics/report?" + dimensions + "&" + measures);
+            var data = await response.json();
+            
+            report.data(data);
+        };
     });
 </script>
 <div class="layout">
@@ -183,6 +227,19 @@
             Measures
         </div>
         <div id="measures" class="item-selection"></div>
+    </div>
+    <div class="main">
+        <div class="toolbar">
+            <button id="update">Update</button>
+        </div>
+        <paginated-table id="report">
+            <columns>
+            </columns>
+            <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
+        </paginated-table>
+        <paginated-pager id="pager" table="#report">
+            <link href="${root}/emirgance/themes/base/paginated/pager.css" rel="stylesheet" type="text/css">
+        </paginated-pager>
     </div>
 </div>
 <jsp:include page="../WEB-INF/includes/footer.jsp" />
