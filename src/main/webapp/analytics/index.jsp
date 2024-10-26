@@ -123,10 +123,49 @@
         padding: 1rem;
     }
     
-    .toolbar {
-        min-height: 1.5lh;
+    .main .toolbar {
+        min-height: 1.0lh;
         background-color: #f8f9fa;
+        border-radius: 6px;
         margin: 1rem 0;
+        padding: 15px 15px;
+        vertical-align: bottom;
+    }
+    
+    .main .toolbar button {
+        border: 1px solid transparent;
+        background-color: #007bff;
+        border-radius: 0.25rem;
+        color: white;
+        cursor: pointer;
+        font-size: 1rem;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    
+    .main .toolbar button:hover {
+        background-color: #0069d9;
+    }
+    
+    .main .toolbar button:active {
+        background-color: #2494fc;
+    }
+    
+    .main .table {
+        min-height: calc((1lh + 9px) * 11);
+    }
+    
+    @keyframes pulse-animation {
+        0% {
+            box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+        }
+        100% {
+            box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+        }
+    }
+    
+    .pulse {
+        animation: pulse-animation 2s infinite;
     }
 </style>
 <script>
@@ -142,9 +181,15 @@
         var dimensions = document.getElementById("dimensions");
         var measures = document.getElementById("measures");
         var report = document.getElementById("report");
+        var updateButton = document.getElementById("update");
         
         var dimensionList = [];
         var measureList = [];
+        
+        function pulseUpdate()
+        {
+            updateButton.classList.add("pulse");
+        }
         
         metadata.sort(function(left, right) {
             if(left.name > right.name) return 1;
@@ -197,12 +242,16 @@
                     list.splice(dimensionList.indexOf(record.name), 1);
                     report.removeColumn(record.name);
                 }
+                
+                updateButton.classList.add("pulse");
             };
         });
         
-        document.getElementById("update").onclick = async function() {
+        updateButton.onclick = async function() {
             var dimensions = dimensionList.length ? "dimensions=" + dimensionList.join("&dimensions=") : "";
             var measures = measureList.length ? "measures=" + measureList.join("&measures=") : "";
+            
+            updateButton.classList.remove("pulse");
             
             var response = await fetch("/services/analytics/report?" + dimensions + "&" + measures);
             var data = await response.json();
@@ -229,17 +278,22 @@
         <div id="measures" class="item-selection"></div>
     </div>
     <div class="main">
+        <h1>Analytics</h1>
         <div class="toolbar">
             <button id="update">Update</button>
         </div>
-        <paginated-table id="report">
-            <columns>
-            </columns>
-            <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
-        </paginated-table>
-        <paginated-pager id="pager" table="#report">
-            <link href="${root}/emirgance/themes/base/paginated/pager.css" rel="stylesheet" type="text/css">
-        </paginated-pager>
+        <div class="table">
+            <paginated-table id="report">
+                <columns>
+                </columns>
+                <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
+            </paginated-table>
+        </div>
+        <div class="pagers">
+            <paginated-pager id="pager" table="#report">
+                <link href="${root}/emirgance/themes/base/paginated/pager.css" rel="stylesheet" type="text/css">
+            </paginated-pager>
+        </div>
     </div>
 </div>
 <jsp:include page="../WEB-INF/includes/footer.jsp" />
