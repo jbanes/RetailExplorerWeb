@@ -70,9 +70,13 @@
         margin-bottom: -0.1rem;
     }
     
-    #chevron-down path {
-        transform: rotate(90deg);
-        transform-origin: center;
+    .pager-bar {
+        display: flex;
+        align-items: center;
+    }
+    
+    .pager-bar paginated-display {
+        flex-grow: 1;
     }
 </style>
 <div class="layout">

@@ -171,6 +171,15 @@
     .pulse {
         animation: pulse-animation 2s infinite;
     }
+    
+    .pager-bar {
+        display: flex;
+        align-items: center;
+    }
+    
+    .pager-bar paginated-display {
+        flex-grow: 1;
+    }
 </style>
 <script>
     const svgns = "http://www.w3.org/2000/svg";
@@ -308,7 +317,10 @@
                 <link href="${root}/css/analytics.css" rel="stylesheet" type="text/css">
             </paginated-table>
         </div>
-        <div class="pagers">
+        <div class="pager-bar">
+            <paginated-display table="#report">
+                <link href="${root}/emirgance/themes/base/paginated/display.css" rel="stylesheet" type="text/css">
+            </paginated-display>
             <paginated-pager id="pager" table="#report">
                 <link href="${root}/emirgance/themes/base/paginated/pager.css" rel="stylesheet" type="text/css">
             </paginated-pager>

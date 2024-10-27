@@ -45,7 +45,12 @@
     </columns>
     <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
 </paginated-table> 
-<paginated-pager id="pager" table="#products">
-    <link href="${root}/emirgance/themes/base/paginated/pager.css" rel="stylesheet" type="text/css">
-</paginated-pager>
+<div class="pager-bar">
+    <paginated-display table="#products">
+        <link href="${root}/emirgance/themes/base/paginated/display.css" rel="stylesheet" type="text/css">
+    </paginated-display>
+    <paginated-pager id="pager" table="#products">
+        <link href="${root}/emirgance/themes/base/paginated/pager.css" rel="stylesheet" type="text/css">
+    </paginated-pager>
+</div>
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />

@@ -12,6 +12,7 @@
     <script src="${root}/emirgance/base/base.js"></script>
     <script src="${root}/emirgance/paginated/table.js"></script>
     <script src="${root}/emirgance/paginated/pager.js"></script>
+    <script src="${root}/emirgance/paginated/display.js"></script>
 </header>
 <body>
     <div id="page_header">
