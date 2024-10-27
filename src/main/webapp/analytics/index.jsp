@@ -120,7 +120,11 @@
     
     .main {
         flex-grow: 1;
-        padding: 1rem;
+        padding: 0 1rem 0 1rem;
+    }
+    
+    .main h1 {
+        margin-block-end: 0;
     }
     
     .main .toolbar {
@@ -186,9 +190,28 @@
         var dimensionList = [];
         var measureList = [];
         
-        function pulseUpdate()
+        function clearColumns()
         {
-            updateButton.classList.add("pulse");
+            dimensionList.forEach(function(dimension) {
+                report.removeColumn(dimension);
+            });
+            
+            measureList.forEach(function(measure) {
+                report.removeColumn(measure);
+            });
+        }
+        
+        function updateColumns()
+        {
+            dimensionList.forEach(function(dimension) {
+                report.addColumn(dimension, dimension, { "type": "string" });
+            });
+            
+            measureList.forEach(function(measure) {
+                report.addColumn(measure, measure, {
+                    "type": (measure.includes("$") || measure.includes("Dollar")) ? "money" : "number"
+                });
+            });
         }
         
         metadata.sort(function(left, right) {
@@ -232,18 +255,13 @@
                 
                 use.setAttributeNS(xlinkns, "href", prefix + (selected ? "#circle-check-solid" : "#blank"));
                 
-                if(selected) 
-                {
-                    list.push(record.name);
-                    report.addColumn(record.name, record.name, {"type": (record.type === "measure" ? "number" : "string")});
-                }
-                else 
-                {
-                    list.splice(dimensionList.indexOf(record.name), 1);
-                    report.removeColumn(record.name);
-                }
-                
                 updateButton.classList.add("pulse");
+                clearColumns();
+                
+                if(selected) list.push(record.name);
+                else list.splice(list.indexOf(record.name), 1);
+                
+                updateColumns();
             };
         });
         
@@ -287,6 +305,7 @@
                 <columns>
                 </columns>
                 <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
+                <link href="${root}/css/analytics.css" rel="stylesheet" type="text/css">
             </paginated-table>
         </div>
         <div class="pagers">
