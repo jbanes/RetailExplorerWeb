@@ -70,6 +70,10 @@
         margin-bottom: -0.1rem;
     }
     
+    .table-main {
+        min-height: calc((1lh + 9px) * 11);
+    }
+    
     .pager-bar {
         display: flex;
         align-items: center;

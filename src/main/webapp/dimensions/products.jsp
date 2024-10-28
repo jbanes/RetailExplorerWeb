@@ -34,17 +34,19 @@
     });
 </script>
 <h1>Products</h1>
-<paginated-table id="products">
-    <columns>
-        <column>Name</column>
-        <column key="BrandName">Brand</column>
-        <column key="CategoryName">Category</column>
-        <column>Type</column>
-        <column>SubType</column>
-        <column type="number">Price</column>
-    </columns>
-    <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
-</paginated-table> 
+<div class="table-main"> 
+    <paginated-table id="products">
+        <columns>
+            <column>Name</column>
+            <column key="BrandName">Brand</column>
+            <column key="CategoryName">Category</column>
+            <column>Type</column>
+            <column>SubType</column>
+            <column type="number">Price</column>
+        </columns>
+        <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
+    </paginated-table> 
+</div>
 <div class="pager-bar">
     <paginated-display table="#products">
         <link href="${root}/emirgance/themes/base/paginated/display.css" rel="stylesheet" type="text/css">

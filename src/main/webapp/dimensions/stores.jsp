@@ -11,15 +11,17 @@
     });
 </script>
 <h1>Stores</h1>
-<paginated-table id="stores" page-size="10">
-    <columns>
-        <column>Name</column>
-        <column key="CountryCode" type="centered">Country Code</column>
-        <column key="StoreNumber" type="number">Store Number</column>
-        <column href="employees.jsp?franchise=${param.franchise}&store={id}" type="number">Employees</column>
-    </columns>
-    <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
-</paginated-table> 
+<div class="table-main"> 
+    <paginated-table id="stores" page-size="10">
+        <columns>
+            <column>Name</column>
+            <column key="CountryCode" type="centered">Country Code</column>
+            <column key="StoreNumber" type="number">Store Number</column>
+            <column href="employees.jsp?franchise=${param.franchise}&store={id}" type="number">Employees</column>
+        </columns>
+        <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
+    </paginated-table> 
+</div>
 <div class="pager-bar">
     <paginated-display table="#stores">
         <link href="${root}/emirgance/themes/base/paginated/display.css" rel="stylesheet" type="text/css">

@@ -23,14 +23,16 @@
     });
 </script>
 <h1>Categories</h1>
-<paginated-table id="categories">
-    <columns>
-        <column href="products.jsp?category={Name}">Name</column>
-        <column href="products.jsp?category={Name}&type={Type}">Type</column>
-        <column href="products.jsp?subtype={id}">SubType</column>
-    </columns>
-    <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
-</paginated-table> 
+<div class="table-main"> 
+    <paginated-table id="categories">
+        <columns>
+            <column href="products.jsp?category={Name}">Name</column>
+            <column href="products.jsp?category={Name}&type={Type}">Type</column>
+            <column href="products.jsp?subtype={id}">SubType</column>
+        </columns>
+        <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
+    </paginated-table> 
+</div>
 <div class="pager-bar">
     <paginated-display table="#categories">
         <link href="${root}/emirgance/themes/base/paginated/display.css" rel="stylesheet" type="text/css">

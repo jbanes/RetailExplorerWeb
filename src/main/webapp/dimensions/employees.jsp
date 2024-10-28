@@ -22,16 +22,17 @@
     });
 </script>
 <h1>Employees</h1>
-<paginated-table id="employees" page-size="10">
-    <columns>
-        <column>Firstname</column>
-        <column>Lastname</column>
-        <column type="centered">Sex</column>
-        <column key="StoreNumber" type="number">Store Number</column>
-    </columns>
-    <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
-</paginated-table>
-
+<div class="table-main"> 
+    <paginated-table id="employees" page-size="10">
+        <columns>
+            <column>Firstname</column>
+            <column>Lastname</column>
+            <column type="centered">Sex</column>
+            <column key="StoreNumber" type="number">Store Number</column>
+        </columns>
+        <link href="${root}/emirgance/themes/base/paginated/table.css" rel="stylesheet" type="text/css">
+    </paginated-table>
+</div>
 <div class="pager-bar">
     <paginated-display table="#employees">
         <link href="${root}/emirgance/themes/base/paginated/display.css" rel="stylesheet" type="text/css">
