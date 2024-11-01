@@ -6,10 +6,11 @@
         var brands = await response.json();
         
         document.getElementById("brands").data(brands);
+        document.querySelector(".loading").classList.remove("loading");
     });
 </script>
 <h1>Brands</h1>
-<div class="table-main"> 
+<div class="table-main loading"> 
     <paginated-table id="brands">
         <columns>
             <column>Name</column>

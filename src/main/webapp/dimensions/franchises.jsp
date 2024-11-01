@@ -6,11 +6,12 @@
             .then(response => response.json())
             .then(function(franchises) {
                 document.getElementById("franchises").data(franchises);
+                document.querySelector(".loading").classList.remove("loading");
             });
     });
 </script>
 <h1>Franchises</h1>
-<div class="table-main"> 
+<div class="table-main loading"> 
     <paginated-table id="franchises">
         <columns>
             <column>Name</column>

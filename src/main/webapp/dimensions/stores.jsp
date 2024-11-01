@@ -7,11 +7,12 @@
             .then(response => response.json())
             .then(function(stores) {
                 document.getElementById("stores").data(stores);
+                document.querySelector(".loading").classList.remove("loading");
             });
     });
 </script>
 <h1>Stores</h1>
-<div class="table-main"> 
+<div class="table-main loading"> 
     <paginated-table id="stores" page-size="10">
         <columns>
             <column>Name</column>

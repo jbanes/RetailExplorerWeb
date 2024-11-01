@@ -82,6 +82,10 @@
     .pager-bar paginated-display {
         flex-grow: 1;
     }
+    
+    .loading * {
+        visibility: hidden;
+    }
 </style>
 <div class="layout">
     <div class="sidebar">

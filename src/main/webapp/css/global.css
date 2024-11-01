@@ -149,6 +149,19 @@ body {
     -webkit-animation: slide-out 0.3s forwards;
 }
 
+.loading {
+  background-color: #ededed !important;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, .5) 50%,
+    rgba(255, 255, 255, 0) 60%
+  ) #ededed;
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1s loading ease-in-out infinite;
+}
+
 @keyframes slide-in {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(0%); }
@@ -167,4 +180,10 @@ body {
 @-webkit-keyframes slide-out {
     0% { -webkit-transform: translateX(0%); }
     100% { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
 }

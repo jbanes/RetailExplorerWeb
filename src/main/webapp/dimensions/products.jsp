@@ -30,11 +30,12 @@
             .then(response => response.json())
             .then(function(products) {
                 document.getElementById("products").data(products);
+                document.querySelector(".loading").classList.remove("loading");
             });
     });
 </script>
 <h1>Products</h1>
-<div class="table-main"> 
+<div class="table-main loading"> 
     <paginated-table id="products">
         <columns>
             <column>Name</column>

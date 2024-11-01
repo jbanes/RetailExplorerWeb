@@ -18,11 +18,12 @@
             .then(response => response.json())
             .then(function(employees) {
                 document.getElementById("employees").data(employees);
+                document.querySelector(".loading").classList.remove("loading");
             });
     });
 </script>
 <h1>Employees</h1>
-<div class="table-main"> 
+<div class="table-main loading"> 
     <paginated-table id="employees" page-size="10">
         <columns>
             <column>Firstname</column>

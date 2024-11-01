@@ -180,6 +180,17 @@
     .pager-bar paginated-display {
         flex-grow: 1;
     }
+    
+    .pager-bar.loading {
+        height: 1.5lh;
+        overflow: hidden;
+        border-top: 16px solid white;
+        border-bottom: 16px solid white;
+    }
+    
+    .pager-bar.loading * {
+        visibility: hidden;
+    }
 </style>
 <script>
     const svgns = "http://www.w3.org/2000/svg";
@@ -278,12 +289,20 @@
             var dimensions = dimensionList.length ? "dimensions=" + dimensionList.join("&dimensions=") : "";
             var measures = measureList.length ? "measures=" + measureList.join("&measures=") : "";
             
+            report.data([]);
             updateButton.classList.remove("pulse");
+            document.querySelectorAll(".table, .pager-bar").forEach(function(element) {
+                element.classList.add("loading");
+            });
             
             var response = await fetch("/services/analytics/report?" + dimensions + "&" + measures);
             var data = await response.json();
             
             report.data(data);
+            
+            document.querySelectorAll(".loading").forEach(function(element) {
+                element.classList.remove("loading");
+            });
         };
     });
 </script>

@@ -19,11 +19,12 @@
             .then(response => response.json())
             .then(function(categories) {
                 document.getElementById("categories").data(categories);
+                document.querySelector(".loading").classList.remove("loading");
             });
     });
 </script>
 <h1>Categories</h1>
-<div class="table-main"> 
+<div class="table-main loading"> 
     <paginated-table id="categories">
         <columns>
             <column href="products.jsp?category={Name}">Name</column>
