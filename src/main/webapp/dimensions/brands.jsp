@@ -2,15 +2,22 @@
 <jsp:include page="../WEB-INF/includes/dimensions/header.jsp" />
 <script>
     document.addEventListener("DOMContentLoaded", async function() {
+        
+        document.querySelectorAll(".table-main, .pager-bar").forEach(function(element) {
+            element.classList.add("loading");
+        });
+        
         var response = await fetch("/services/dimensions/brands");
         var brands = await response.json();
         
         document.getElementById("brands").data(brands);
-        document.querySelector(".loading").classList.remove("loading");
+        document.querySelectorAll(".loading").forEach(function(element) {
+            element.classList.remove("loading");
+        });
     });
 </script>
 <h1>Brands</h1>
-<div class="table-main loading"> 
+<div class="table-main"> 
     <paginated-table id="brands">
         <columns>
             <column>Name</column>

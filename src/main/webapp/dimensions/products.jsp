@@ -25,17 +25,23 @@
         <c:if test="${not empty param.subtype}">
         params.push("subtype=<c:out value="${param.subtype}" />");
         </c:if>
+        
+        document.querySelectorAll(".table-main, .pager-bar").forEach(function(element) {
+            element.classList.add("loading");
+        });
 
         fetch("/services/dimensions/products?" + params.join('&'))
             .then(response => response.json())
             .then(function(products) {
                 document.getElementById("products").data(products);
-                document.querySelector(".loading").classList.remove("loading");
+                document.querySelectorAll(".loading").forEach(function(element) {
+                    element.classList.remove("loading");
+                });
             });
     });
 </script>
 <h1>Products</h1>
-<div class="table-main loading"> 
+<div class="table-main"> 
     <paginated-table id="products">
         <columns>
             <column>Name</column>

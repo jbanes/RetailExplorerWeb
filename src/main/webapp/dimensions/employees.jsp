@@ -14,16 +14,23 @@
     </c:if>
         
     document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll(".table-main, .pager-bar").forEach(function(element) {
+            element.classList.add("loading");
+        });
+        
         fetch("/services/dimensions/employees?" + params.join('&'))
             .then(response => response.json())
             .then(function(employees) {
                 document.getElementById("employees").data(employees);
-                document.querySelector(".loading").classList.remove("loading");
+                document.querySelectorAll(".loading").forEach(function(element) {
+                    element.classList.remove("loading");
+                });
             });
     });
 </script>
 <h1>Employees</h1>
-<div class="table-main loading"> 
+<div class="table-main"> 
     <paginated-table id="employees" page-size="10">
         <columns>
             <column>Firstname</column>

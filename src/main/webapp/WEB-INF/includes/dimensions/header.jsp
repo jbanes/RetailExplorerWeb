@@ -83,8 +83,20 @@
         flex-grow: 1;
     }
     
+    .loading {
+        transition-delay: 0.2s;
+    }
+    
     .loading * {
         visibility: hidden;
+        transition-delay: 0.2s;
+    }
+    
+    .pager-bar.loading {
+        height: 1.5lh;
+        overflow: hidden;
+        border-top: 16px solid white;
+        border-bottom: 16px solid white;
     }
 </style>
 <div class="layout">

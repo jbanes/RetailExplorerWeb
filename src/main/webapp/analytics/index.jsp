@@ -188,8 +188,25 @@
         border-bottom: 16px solid white;
     }
     
-    .pager-bar.loading * {
-        visibility: hidden;
+    .loading {
+        transition-duration: 0.1s;
+    }
+    
+    .table > *, .pager-bar > * {
+        opacity: 1.0;
+        transition-duration: 0.5s;
+        transition-property: background-color, opacity;
+    }
+    
+    .table.loading > *, .pager-bar.loading > * {
+        opacity: 0.0;
+        transition-duration: 0.1s;
+        transition-property: background-color, opacity;
+    }
+    
+    .table, .pager-bar {
+        transition-duration: 0.5s;
+        transition-property: background-color, opacity;
     }
 </style>
 <script>
