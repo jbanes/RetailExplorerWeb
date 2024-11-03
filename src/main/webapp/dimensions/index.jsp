@@ -1,6 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="../WEB-INF/includes/dimensions/header.jsp" />
 <h1>Dimensions</h1>
+<p>Follow the links on the left to explore the available dimensions. Please be
+   aware that there are performance updates planned for some of the pages (e.g.
+   Brands) and that a few pages have known data issues being actively worked on. 
+   (e.g. Brands -> Products)</p>
+
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu diam 
     dui. Mauris neque augue, suscipit quis neque sit amet, iaculis blandit quam. 
     Donec vitae bibendum augue. Maecenas sed vestibulum turpis, ac euismod urna. 
@@ -19,4 +24,5 @@
     Fusce quis porttitor purus. Nullam eget augue enim. Pellentesque habitant morbi 
     tristique senectus et netus et malesuada fames ac turpis egestas. Ut ut dolor 
     mollis, sagittis ante at, scelerisque dolor.</p>
+
 <jsp:include page="../WEB-INF/includes/dimensions/footer.jsp" />

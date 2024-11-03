@@ -34,7 +34,7 @@
                 </a>
             </div>
             <div>
-                <a class="nav-link ${fn:contains(url, "/dashboards/") ? "selected" : ""}">
+                <a class="nav-link ${fn:contains(url, "/dashboards/") ? "selected" : ""}" href="${root}/dashboards/index.jsp">
                    <svg width="24" height="24"><use xlink:href="${root}/images/symbols.svg#table"></use></svg>
                     Dashboards
                 </a>
