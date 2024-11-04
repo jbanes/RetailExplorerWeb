@@ -32,3 +32,8 @@ th.number, th.money {
     color: white;
     text-align: right;
 }
+
+table thead tr th.money .arrow {
+    right: initial;
+    left: 12px;
+}

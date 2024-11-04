@@ -23,6 +23,9 @@
     <symbol id="chevron-down" viewBox="0 0 16 16">
         <path fill="currentcolor" fill-rule="evenodd" transform="rotate(90 8 8)" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
     </symbol>
+    <symbol id="chevron-up" viewBox="0 0 16 16">
+        <path fill="currentcolor" fill-rule="evenodd" transform="rotate(270 8 8)" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+    </symbol>
 
     <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
     <symbol id="tray" viewBox="0 -50 448 512">
