@@ -307,6 +307,9 @@
             var measures = measureList.length ? "measures=" + measureList.join("&measures=") : "";
             
             report.data([]);
+            report.page(0);
+            report.sort(null);
+            
             updateButton.classList.remove("pulse");
             document.querySelectorAll(".table, .pager-bar").forEach(function(element) {
                 element.classList.add("loading");
