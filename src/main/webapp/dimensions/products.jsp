@@ -26,7 +26,7 @@
         params.push("subtype=<c:out value="${param.subtype}" />");
         </c:if>
         
-        document.querySelectorAll(".table-main, .pager-bar").forEach(function(element) {
+        document.querySelectorAll(".table-main, .pager-bar, .toolbar").forEach(function(element) {
             element.classList.add("loading");
         });
 
@@ -41,6 +41,11 @@
     });
 </script>
 <h1>Products</h1>
+<div class="toolbar">
+    <paginated-search table="#products" keys="Name, Brand, Category, Type, SubType, Price">
+        <link href="${root}/css/search.css" rel="stylesheet" type="text/css">
+    </paginated-search>
+</div>
 <div class="table-main"> 
     <paginated-table id="products">
         <columns>

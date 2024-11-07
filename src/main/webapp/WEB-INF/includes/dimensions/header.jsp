@@ -98,6 +98,15 @@
         border-top: 16px solid white;
         border-bottom: 16px solid white;
     }
+    
+    .dimension .toolbar {
+        min-height: calc(1.0lh + 2px);
+        background-color: #f8f9fa;
+        border-radius: 6px;
+        margin: 1rem 0;
+        padding: 15px 15px;
+        vertical-align: bottom;
+    }
 </style>
 <div class="layout">
     <div class="sidebar">

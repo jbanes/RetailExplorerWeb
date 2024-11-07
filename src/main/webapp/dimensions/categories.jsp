@@ -15,7 +15,7 @@
         params.push("brand=<c:out value="${param.brand}" />");
         </c:if>
         
-        document.querySelectorAll(".table-main, .pager-bar").forEach(function(element) {
+        document.querySelectorAll(".table-main, .pager-bar, .toolbar").forEach(function(element) {
             element.classList.add("loading");
         });
 
@@ -30,6 +30,11 @@
     });
 </script>
 <h1>Categories</h1>
+<div class="toolbar">
+    <paginated-search table="#categories" keys="Name, Type, SubType">
+        <link href="${root}/css/search.css" rel="stylesheet" type="text/css">
+    </paginated-search>
+</div>
 <div class="table-main loading"> 
     <paginated-table id="categories">
         <columns>

@@ -19,6 +19,11 @@
     });
 </script>
 <h1>Stores</h1>
+<div class="toolbar">
+    <paginated-search table="#stores" keys="Name, CountryCode, StoreNumber">
+        <link href="${root}/css/search.css" rel="stylesheet" type="text/css">
+    </paginated-search>
+</div>
 <div class="table-main"> 
     <paginated-table id="stores" page-size="10">
         <columns>
