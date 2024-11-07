@@ -131,6 +131,7 @@
         min-height: 1.0lh;
         background-color: #f8f9fa;
         border-radius: 6px;
+        display: flex;
         margin: 1rem 0;
         padding: 15px 15px;
         vertical-align: bottom;
@@ -347,6 +348,9 @@
         <h1>Analytics</h1>
         <div class="toolbar">
             <button id="update">Update</button>
+            <paginated-search style="flex-grow: 1;" table="#report">
+                <link href="${root}/css/search.css" rel="stylesheet" type="text/css">
+            </paginated-search>
         </div>
         <div class="table">
             <paginated-table id="report">
