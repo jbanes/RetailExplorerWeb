@@ -5,9 +5,11 @@
     document.addEventListener("DOMContentLoaded", function() {
 
         var params = [];
+        var service = "products";
 
         <c:if test="${not empty param.franchise}">
         params.push("franchise=<c:out value="${param.franchise}" />");
+        service = "franchise_products";
         </c:if>
 
         <c:if test="${not empty param.brand}">
@@ -30,7 +32,7 @@
             element.classList.add("loading");
         });
 
-        fetch("/services/dimensions/products?" + params.join('&'))
+        fetch("/services/dimensions/" + service + "?" + params.join('&'))
             .then(response => response.json())
             .then(function(products) {
                 document.getElementById("products").data(products);
