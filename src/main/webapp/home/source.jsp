@@ -74,7 +74,7 @@
 <div class="layout">
     <div class="sidebar">
         <a href="index.jsp">
-            <div class="selected">
+            <div>
                 <svg><use xlink:href="${root}/images/symbols.svg#house-fill"></use></svg>
                 Home
             </div>
@@ -86,40 +86,43 @@
             </div>
         </a>
         <a href="source.jsp">
-            <div>
+            <div class="selected">
                 <svg><use xlink:href="${root}/images/symbols.svg#github"></use></svg>
                 Source Code
             </div>
         </a>
     </div>
     <div class="main">
-        <h1>Home</h1>
-        <img src="../images/under_construction.svg" style="float: right;" alt="Under Construction" title="Under Construction">
-        <p>Thank you for visiting the Retail Explorer demo application! Please
-        feel free to look around and investigate the features on display.</p>
+        <h1>Source Code</h1>
         
-        <p>This application serves as a technology demonstration for the upcoming 
-           Convirgance suite of technologies from Invirgance. These technologies attempt 
-           to challenge the norm with extraordinarily "simple" approaches that are easier 
-           to reason on, faster to develop, higher performance, and better aligned with 
-           the way computers work.</p>
-
-        <p>Please mind our dust as this application is under active construction. You will
-           find numerous bugs and data quality issues that we're working to resolve. We
-           hope you enjoy this technology demonstration and encourage you to check back
-           regularly for enhancements and updates!</p>
-
-        <p>Despite being under development, we're making all the source code of the application
-           and the underlying libraries available for examination and use. We have
-           also provided an overview of the architecture used by this application.
-           Follow the links on the left if you would like to know more.<p>
+        <div style="float: right; padding-left: 2em;">
+            <img src="../images/osi-badge-light.svg" style="width: 20em;" alt="OSI Approved License" title="OSI Approved License">
+        </div>
+        <p>Invirgance is interested in promoting improvement in the Technology
+        industry. To accomplish this, we are making all of our source code
+        freely available under the highly permissive 
+        <a href="https://opensource.org/license/mit">MIT License</a>.</p>
         
-        <p>Feel free to <a href="mailto:info@invirgance.com">contact 
-           us</a> if you have any questions about this demo application or want
-           to know more about the Convirgance technology stack.</p>
-            
-        <p>Check back regularly as we enhance the application and insert
-           detailed explanations for how each page is constructed!</p>
+        <p>This permissive license means that you can use the code in commercial
+        projects, customize it, and even fork the projects for your needs without
+        releasing your changes.</p>
+        
+        <h3>Retail Explorer</h3>
+        <ul>
+            <li><a href="https://github.com/jbanes/RetailExplorerWeb">Frontend</a></li>
+            <li><a href="https://github.com/jbanes/RetailExplorerServices">Web Services</a></li>
+        </ul>
+        <h3>Libraries</h3>
+        <ul>
+            <li><a href="https://github.com/InvirganceOpenSource/convirgance">Convirgance (Base)</a></li>
+            <li><a href="https://github.com/InvirganceOpenSource/convirgance-web">Convirgance (Web Services)</a></li>
+            <li><a href="https://github.com/InvirganceOpenSource/convirgance-olap">Convirgane (OLAP)</a></li>
+            <li><a href="https://github.com/InvirganceOpenSource/emirgance">Emirgance (JS Web Components)</a></li>
+        </ul>
+        <h3>Artificial Data Generation</h3>
+        <ul>
+            <li><a href="https://github.com/jbanes/datagen">Retail Data Generator</a></li>
+        </ul>
     </div>
 </div>
 <jsp:include page="../WEB-INF/includes/footer.jsp" />

@@ -4,7 +4,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         
-        document.querySelectorAll(".table-main, .pager-bar").forEach(function(element) {
+        document.querySelectorAll(".table-main, .pager-bar, .toolbar").forEach(function(element) {
             element.classList.add("loading");
         });
         
